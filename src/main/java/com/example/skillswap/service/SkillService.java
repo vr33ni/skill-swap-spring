@@ -6,7 +6,9 @@ import java.util.Optional;
 import com.example.skillswap.model.Skill;
 
 public interface SkillService {
-    Skill createSkill(String name);
+    Skill createSkill(String name, String category);
+
     List<Skill> getAllSkills();
+
     Optional<Skill> getSkillByName(String name);
 }

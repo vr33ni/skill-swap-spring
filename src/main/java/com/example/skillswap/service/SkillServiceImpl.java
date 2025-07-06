@@ -17,10 +17,14 @@ public class SkillServiceImpl implements SkillService {
     }
 
     @Override
-    public Skill createSkill(String name) {
-        Skill skill = new Skill();
-        skill.setName(name);
-        return skillRepository.save(skill);
+    public Skill createSkill(String name, String category) {
+        return skillRepository.findByName(name)
+                .orElseGet(() -> {
+                    Skill skill = new Skill();
+                    skill.setName(name);
+                    skill.setCategory(category); // can be null
+                    return skillRepository.save(skill);
+                });
     }
 
     @Override
@@ -33,4 +37,3 @@ public class SkillServiceImpl implements SkillService {
         return skillRepository.findByName(name);
     }
 }
-

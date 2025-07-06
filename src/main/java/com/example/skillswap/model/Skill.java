@@ -13,6 +13,8 @@ public class Skill {
 
     private String name;
 
+    private String category;
+
     @OneToMany(mappedBy = "skill")
     private Set<UserSkill> userSkills;
 
@@ -34,6 +36,14 @@ public class Skill {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public Set<UserSkill> getUserSkills() {

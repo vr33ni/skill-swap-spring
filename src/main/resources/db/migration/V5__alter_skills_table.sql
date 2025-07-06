@@ -1,0 +1,2 @@
+ALTER TABLE skills
+ADD COLUMN category VARCHAR(50);
