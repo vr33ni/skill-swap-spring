@@ -25,4 +25,17 @@ public interface UserRepository extends JpaRepository<User, UUID>, CustomUserRep
     @Query(value = "UPDATE users SET location = :newLocation WHERE id = :userId", nativeQuery = true)
     void updateLocation(@Param("userId") UUID userId, @Param("newLocation") Point newLocation);
 
+    @Query("""
+            SELECT u FROM User u
+            WHERE u.id <> :userId AND u.id NOT IN (
+                SELECT CASE
+                    WHEN m.user1.id = :userId THEN m.user2.id
+                    ELSE m.user1.id
+                END
+                FROM Match m
+                WHERE m.user1.id = :userId OR m.user2.id = :userId
+            )
+            """)
+    List<User> findUsersWithoutMatchWith(UUID userId);
+
 }

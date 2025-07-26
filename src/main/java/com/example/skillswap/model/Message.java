@@ -8,6 +8,7 @@ import java.util.UUID;
 public class Message {
 
     @Id
+    @GeneratedValue
     private UUID id;
 
     @ManyToOne
@@ -23,18 +24,43 @@ public class Message {
     @Column(name = "sent_at")
     private java.time.LocalDateTime sentAt;
 
-    public UUID getId() { return id; }
-    public void setId(UUID id) { this.id = id; }
+    public UUID getId() {
+        return id;
+    }
 
-    public Match getMatch() { return match; }
-    public void setMatch(Match match) { this.match = match; }
+    public void setId(UUID id) {
+        this.id = id;
+    }
 
-    public User getSender() { return sender; }
-    public void setSender(User sender) { this.sender = sender; }
+    public Match getMatch() {
+        return match;
+    }
 
-    public String getContent() { return content; }
-    public void setContent(String content) { this.content = content; }
+    public void setMatch(Match match) {
+        this.match = match;
+    }
 
-    public java.time.LocalDateTime getSentAt() { return sentAt; }
-    public void setSentAt(java.time.LocalDateTime sentAt) { this.sentAt = sentAt; }
+    public User getSender() {
+        return sender;
+    }
+
+    public void setSender(User sender) {
+        this.sender = sender;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public java.time.LocalDateTime getSentAt() {
+        return sentAt;
+    }
+
+    public void setSentAt(java.time.LocalDateTime sentAt) {
+        this.sentAt = sentAt;
+    }
 }

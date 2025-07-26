@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
@@ -33,6 +34,11 @@ public class MatchServiceImpl implements MatchService {
 
     @Override
     public Match createMatch(UUID user1Id, UUID user2Id, List<Long> skillIds) {
+        Optional<Match> existing = matchRepository.findByUsers(user1Id, user2Id);
+        if (existing.isPresent()) {
+            return existing.get(); // Avoid duplicate
+        }
+
         User user1 = userRepository.findById(user1Id).orElseThrow(() -> new RuntimeException("User1 not found"));
         User user2 = userRepository.findById(user2Id).orElseThrow(() -> new RuntimeException("User2 not found"));
         Set<Skill> skills = new HashSet<>(skillRepository.findAllById(skillIds));
@@ -55,11 +61,4 @@ public class MatchServiceImpl implements MatchService {
         matchRepository.save(match);
     }
 
-    @Override
-    public List<Match> getMatchesForUser(UUID userId) {
-        List<Match> matches = new ArrayList<>();
-        matches.addAll(matchRepository.findByUser1Id(userId));
-        matches.addAll(matchRepository.findByUser2Id(userId));
-        return matches;
-    }
 }

@@ -33,7 +33,7 @@ INSERT INTO user_skills (user_id, skill_id, type) VALUES
 
 -- Insert a match between Alice and Bob for Power Drill and Ladder
 INSERT INTO matches (id, user1_id, user2_id, status, created_at)
-VALUES ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '11111111-1111-1111-1111-111111111111', '22222222-2222-2222-2222-222222222222', 'PENDING', NOW());
+VALUES ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '11111111-1111-1111-1111-111111111111', '22222222-2222-2222-2222-222222222222', 'ACCEPTED', NOW());
 
 -- Link skills to the match
 INSERT INTO match_skills (match_id, skill_id) VALUES

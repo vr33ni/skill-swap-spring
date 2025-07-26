@@ -6,7 +6,6 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
-import com.example.skillswap.model.Skill;
 import com.example.skillswap.model.User;
 import com.example.skillswap.repository.SkillRepository;
 import com.example.skillswap.repository.UserRepository;

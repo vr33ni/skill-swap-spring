@@ -165,25 +165,19 @@ public class User {
         this.providerId = providerId;
     }
 
-    public static UserDto toDto(User user) {
+    public UserDto toDto() {
         double lat = 0;
         double lng = 0;
 
-        if (user.getLocation() != null) {
-            lat = user.getLocation().getY();
-            lng = user.getLocation().getX();
+        if (location != null) {
+            lat = location.getY();
+            lng = location.getX();
         }
 
-        double radius = user.getRadiusKm() != null ? user.getRadiusKm() : 5.0;
+        double radius = radiusKm != null ? radiusKm : 5.0;
 
         return new UserDto(
-                user.getId(),
-                user.getName(),
-                user.getEmail(),
-                user.getPhotoUrl(),
-                lat,
-                lng,
-                radius);
+                id, name, email, photoUrl, lat, lng, radius);
     }
 
 }

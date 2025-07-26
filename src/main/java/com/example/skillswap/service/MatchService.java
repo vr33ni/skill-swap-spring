@@ -9,6 +9,4 @@ public interface MatchService {
     Match createMatch(UUID user1Id, UUID user2Id, List<Long> skillIds);
 
     void updateMatchStatus(UUID matchId, String status);
-
-    List<Match> getMatchesForUser(UUID userId);
 }
