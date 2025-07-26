@@ -42,7 +42,7 @@ Build and run the application:
 ./mvnw spring-boot:run
 ```
 
-### 4. Test thea application
+### 4. Test the application
 
 Use curl or a tool like Postman to test the REST APIs. For example:
 
